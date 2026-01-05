@@ -25,6 +25,7 @@ function Navbar() {
 
           <div className="flex items-center space-x-4">
             <button className="hidden md:block text-sm font-medium text-black">Sign up</button>
+            <span className="inline-block w-1 h-10 bg-black"></span>
             <button className="hidden md:block bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition">
               Connect Wallet
             </button>

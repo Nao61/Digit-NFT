@@ -65,8 +65,8 @@ function Collections() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {collections.map((nft) => (
-            <div key={nft.id} className="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:shadow-lg transition">
-              <div className="aspect-square overflow-hidden">
+            <div key={nft.id} className="bg-white rounded-3xl hover:shadow-lg transition border-2 border-gray-300 p-3">
+              <div className="aspect-square overflow-hidden rounded-3xl">
                 <img 
                   src={nft.image} 
                   alt=""
