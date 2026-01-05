@@ -28,12 +28,12 @@ function Hero() {
           </div>
 
           <div className="relative">
-            <div className="flex items-center justify-center gap-4 mt-36">
+            <div className="flex items-center justify-center gap-8 mt-60">
               <div className="relative">
                 <div className="absolute -top-36 -left-1 w-36 h-40 flex items-center justify-center">
                   <img src={cercle} alt="" />
                </div>
-                <div className="w-48 h-64 rounded-full overflow-hidden">
+                <div className="w-56 h-96 rounded-full overflow-hidden">
                   <div className="w-full h-full flex items-center justify-center text-white text-6xl">
                      <img src={Rectangle3}  alt="" className="w-full h-full object-cover"/>
                   </div>
@@ -42,7 +42,7 @@ function Hero() {
               </div>
                    
               <div className="relative mt-12">
-                <div className="w-48 h-64 rounded-full -translate-y-16 overflow-hidden">
+                <div className="w-56 h-96 rounded-full -translate-y-36 overflow-hidden">
                     <img src={Rectangle4}  alt="" className="w-full h-full object-cover"/>
                 </div>
               </div>
