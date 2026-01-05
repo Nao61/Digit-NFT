@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import EthereumEllipse from '../assets/Icons/EthereumEllipse.svg'
-import cyberPunk from '../assets/Images/cyberPunk.png'
-import durolost from '../assets/Images/durolost.png'
-import spaceX from '../assets/Images/spaceX.png'
-import snoppDogg from '../assets/Images/snoppDogg.png'
+import EthereumEllipse from '../assets/icons/EthereumEllipse.svg'
+import cyberPunk from '../assets/images/cyberPunk.png'
+import durolost from '../assets/images/durolost.png'
+import spaceX from '../assets/images/spaceX.png'
+import snoppDogg from '../assets/images/snoppDogg.png'
 
 function Collections() {
   const [activeFilter, setActiveFilter] = useState('All categories')
