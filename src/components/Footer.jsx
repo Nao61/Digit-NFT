@@ -6,22 +6,22 @@ function Footer() {
   return (
     <footer className="bg-white py-12 px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+        <div className="flex flex-col  gap-6">
+            <div className="w-12 h-12 rounded-full flex items-start justify-start flex-shrink-0">
               <img src={Frame} alt="" />
             </div>
-            <p className="text-sm font-medium">
+    
+        <div className="flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between gap-4">
+            <p className="text-lg font-semibold">
               Create Explore & Collect Digital  NFTs
             </p>
-          </div>
-
-          <div className="flex items-center gap-8 text-sm">
+          <div className="flex space-x-8 text-sm">
             <a href="#" className="hover:underline">Privacy</a>
             <a href="#" className="hover:underline">Terms & Conditions</a>
             <a href="#" className="hover:underline">About Us</a>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   )

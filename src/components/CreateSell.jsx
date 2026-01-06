@@ -34,15 +34,15 @@ function CreateSell() {
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-4xl font-bold mb-12">Create and Sell Now</h2>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-[50px]">
           {steps.map((step, index) => (
-            <div key={index} className="bg-gray-50 rounded-2xl p-6">
+            <div key={index} className="bg-gray-200 rounded-2xl p-6">
               <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center text-white mb-6">
-  <img src={step.icon} alt="" className="w-8 h-8" />
-</div>
+                <img src={step.icon} alt="" className="w-8 h-8" />
+              </div>
 
               <h3 className="font-semibold text-lg mb-3">{step.title}</h3>
-              <p className="text-secondary text-sm leading-relaxed">{step.desc}</p>
+              <p className="text-sm font-medium leading-relaxed">{step.desc}</p>
             </div>
           ))}
         </div>

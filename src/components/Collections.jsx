@@ -16,33 +16,45 @@ function Collections() {
       name: 'CyberPunk', 
       price: '68',
       image: cyberPunk,
+      category: 'Gaming',
     },
     { 
       id: 2, 
       name: 'Durolost Boll - Upper', 
       price: '68',
       image: durolost,
+      category: 'Sport',
     },
     { 
       id: 3, 
       name: 'Space X Wiper', 
       price: '68',
       image: spaceX,
+      category: 'Art',
     },
     { 
       id: 4, 
       name: 'Snoop Dogg', 
       price: '68',
       image: snoppDogg,
+      category: 'Celebrities',
     },
   ]
+
+  const category =
+  activeFilter === 'All categories'
+    ? collections
+    : collections.filter(
+        (item) => item.category === activeFilter
+      )
+
 
   return (
     <section className="py-16 px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-4xl font-bold">Our Collections</h2>
-          <a href="#" className="text-sm font-medium hover:underline">
+          <a href="#" className="text-sm font-medium hover:border-b-2">
             View more
           </a>
         </div>
@@ -52,7 +64,7 @@ function Collections() {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition ${
+              className={`px-5 py-2 rounded-lg text-sm font-medium transition ${
                 activeFilter === filter
                   ? 'bg-black text-white'
                   : 'bg-gray-100 text-black hover:bg-gray-200'
@@ -63,10 +75,10 @@ function Collections() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {collections.map((nft) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {category.map((nft) => (
             <div key={nft.id} className="bg-white rounded-3xl hover:shadow-lg transition border-2 border-gray-300 p-3">
-              <div className="aspect-square overflow-hidden rounded-3xl">
+              <div className="aspect-square overflow-hidden rounded-2xl mb-6">
                 <img 
                   src={nft.image} 
                   alt=""
@@ -74,15 +86,15 @@ function Collections() {
                 />
               </div>
 
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-4">
+              <div>
+                <div className="flex items-center justify-between mb-6">
                   <h3 className="font-semibold text-base">{nft.name}</h3>
                   <div className="flex items-center gap-1 text-sm font-medium">
                     <img src={EthereumEllipse} alt="" className="w-full h-full object-cover" /> 
                     <span>{nft.price}</span>
                   </div>
                 </div>
-                <button className="w-full bg-white border-2 border-black text-black py-2.5 rounded-full text-sm font-medium hover:bg-black hover:text-white transition">
+                <button className="w-full bg-white border-2 border-black text-black py-2.5 rounded-xl text-sm font-medium hover:bg-black hover:text-white transition">
                   Place a Bid
                 </button>
               </div>
