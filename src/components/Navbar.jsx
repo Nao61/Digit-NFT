@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="border-b border-gray-200 bg-white">
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-around gap-24">
+        <div className="flex items-center justify-between md:justify-around gap-24">
           
           <div className="flex items-center">
             <div className="w-10 h-10 rounded-full flex items-center justify-center">
@@ -25,7 +25,7 @@ function Navbar() {
 
           <div className="flex items-center space-x-4">
             <button className="hidden md:block text-sm font-medium text-black">Sign up</button>
-            <span className="inline-block w-1 h-10 bg-black"></span>
+            <span className="hidden md:inline-block w-1 h-10 bg-black"></span>
             <button className="hidden md:block bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition">
               Connect Wallet
             </button>

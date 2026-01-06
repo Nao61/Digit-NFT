@@ -8,9 +8,9 @@ function Hero() {
   return (
     <section className="py-16 px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col lg:flex-row items-center justify-between">
           <div>
-            <h1 className="text-8xl md:text-8xl font-bold leading-tight mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold leading-tight mb-6">
               See the NFT
               <br />
               new world
@@ -42,7 +42,7 @@ function Hero() {
               </div>
                    
               <div className="relative mt-12">
-                <div className="w-56 h-96 rounded-full -translate-y-36 overflow-hidden">
+                <div className="hidden md:block w-56 h-96 rounded-full -translate-y-36 overflow-hidden">
                     <img src={Rectangle4}  alt="" className="w-full h-full object-cover"/>
                 </div>
               </div>
