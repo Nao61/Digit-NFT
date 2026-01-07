@@ -34,7 +34,7 @@ function CreateSell() {
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-4xl font-bold mb-12">Create and Sell Now</h2>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-[50px]">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, index) => (
             <div key={index} className="bg-gray-200 rounded-2xl p-6">
               <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center text-white mb-6">
