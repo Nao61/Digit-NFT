@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Frame from "../assets/icons/Frame.svg";
+import { signInSchema } from "../components/validations.js";
+
 
 function SignIn() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,34 +22,66 @@ function SignIn() {
     }));
   };
 
-  const validate = () => {
-    const newErrors = {};
+  // const validate = () => {
+  //   const newErrors = {};
 
-    if (!formData.email) {
-      newErrors.email = "Veuillez remplir cet champ";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email invalide";
-    }
+  //   if (!formData.email) {
+  //     newErrors.email = "Veuillez remplir cet champ";
+  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+  //     newErrors.email = "Email invalide";
+  //   }
 
-    if (!formData.password) {
-      newErrors.password = "Veuillez remplir cet champ";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Mot de passe Incorrect";
-    }
+  //   if (!formData.password) {
+  //     newErrors.password = "Veuillez remplir cet champ";
+  //   } else if (formData.password.length < 6) {
+  //     newErrors.password = "Mot de passe Incorrect";
+  //   }
 
-    return newErrors;
-  };
+  //   return newErrors;
+  // };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    setErrors(validationErrors);
+  e.preventDefault();
 
-    if (Object.keys(validationErrors).length === 0) {
-      console.log("Connexion réussie :", formData);
-      alert("Connexion réussie !");
+  try {
+    signInSchema.parse(formData);
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!storedUser) {
+      setErrors({ email: "Aucun compte trouvé. Veuillez vous inscrire." });
+      return;
     }
-  };
+
+    if (storedUser.email !== formData.email) {
+      setErrors({ email: "Email incorrect" });
+      return;
+    }
+
+    if (storedUser.password !== formData.password) {
+      setErrors({ password: "Mot de passe incorrect" });
+      return;
+    }
+
+    alert("Connexion réussie !");
+    console.log("Utilisateur connecté :", storedUser);
+    navigate("/")
+
+    setErrors({});
+  } catch (error) {
+    if (error.issues) {
+      const formattedErrors = {};
+
+      error.issues.forEach((err) => {
+        const fieldName = err.path[0];
+        formattedErrors[fieldName] = err.message;
+      });
+
+      setErrors(formattedErrors);
+    }
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">

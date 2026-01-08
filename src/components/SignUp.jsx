@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Frame from "../assets/icons/Frame.svg";
+import { signUpSchema } from "../components/validations.js";
+
 
 function SignUp() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     surname: "",
     firstName: "",
@@ -20,49 +23,67 @@ function SignUp() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const validate = () => {
-    const newErrors = {};
+  // const validate = () => {
+  //   const newErrors = {};
 
-    if (!formData.email) {
-      newErrors.email = "Veuillez remplir cet champ";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email invalide";
-    }
+  //   if (!formData.email) {
+  //     newErrors.email = "Veuillez remplir cet champ";
+  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+  //     newErrors.email = "Email invalide";
+  //   }
 
-    if (!formData.password) {
-      newErrors.password = "Veuillez remplir cet champ";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Mot de passe trop court (min 6 caractères)";
-    }
+  //   if (!formData.password) {
+  //     newErrors.password = "Veuillez remplir cet champ";
+  //   } else if (formData.password.length < 6) {
+  //     newErrors.password = "Mot de passe trop court (min 6 caractères)";
+  //   }
 
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Veuillez remplir cet champ";
-    } else if (formData.confirmPassword !== formData.password) {
-      newErrors.confirmPassword = "Mot de passe Incorrect";
-    }
+  //   if (!formData.confirmPassword) {
+  //     newErrors.confirmPassword = "Veuillez remplir cet champ";
+  //   } else if (formData.confirmPassword !== formData.password) {
+  //     newErrors.confirmPassword = "Mot de passe Incorrect";
+  //   }
 
-    return newErrors;
-  };
+  //   return newErrors;
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    setErrors(validationErrors);
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (Object.keys(validationErrors).length === 0) {
-      console.log("Formulaire valide :", formData);
-      alert("Inscription réussie !");
-      setFormData({
-        surname: "",
-        firstName: "",
-        phone: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
+  console.log("SUBMIT CLIQUÉ", formData);
+
+  try {
+    signUpSchema.parse(formData);
+    
+    localStorage.setItem("user", JSON.stringify(formData));
+
+    alert("Inscription réussie !");
+    navigate("/")
+
+    setFormData({
+      surname: "",
+      firstName: "",
+      phone: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+
+    setErrors({});
+  } catch (error) {
+    if (error.issues) {
+      const formattedErrors = {};
+
+      error.issues.forEach((issue) => {
+    const field = issue.path[0];
+    formattedErrors[field] = issue.message;
       });
-      setErrors({});
+
+      setErrors(formattedErrors);
     }
-  };
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-20">
@@ -83,6 +104,7 @@ function SignUp() {
             value={formData.surname}
             onChange={handleChange}
             placeholder="Entrez votre nom"
+            error={errors.surname}
           />
           <Input
             label="Prénom"
@@ -90,6 +112,7 @@ function SignUp() {
             value={formData.firstName}
             onChange={handleChange}
             placeholder="Entrez votre prénom"
+            error={errors.firstName}
           />
           <Input
             label="Téléphone"
@@ -97,6 +120,7 @@ function SignUp() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="Entrez votre numéro"
+            error={errors.phone}
           />
           <Input
             label="Email"
