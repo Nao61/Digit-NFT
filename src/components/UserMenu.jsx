@@ -34,7 +34,7 @@ function UserMenu() {
             onClick={() => setIsOpen(false)}
           />
           
-          <div className="absolute mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+          <div className="absolute top-12 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
             <div className="px-4 py-3 border-b border-gray-100">
               <div className="flex items-center gap-2 mb-1">
                 <User size={16} className="text-gray-500" />
