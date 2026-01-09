@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import bcrypt from "bcryptjs";
 import Input from "../components/Input";
 import Frame from "../assets/icons/Frame.svg";
 import { signUpSchema } from "../components/validations.js";
@@ -47,15 +48,25 @@ function SignUp() {
   //   return newErrors;
   // };
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
 
   console.log("SUBMIT CLIQUÉ", formData);
 
   try {
     signUpSchema.parse(formData);
-    
-    localStorage.setItem("user", JSON.stringify(formData));
+
+    const hashedPassword = await bcrypt.hash(formData.password, 10);
+    const userHashed = {
+      surname: formData.surname,
+      firstName: formData.firstName,
+      phone: formData.phone,
+      email: formData.email,
+      password: hashedPassword,
+    };
+
+    localStorage.setItem("user", JSON.stringify(userHashed));
+    localStorage.setItem("isLoggedIn", "true");
 
     alert("Inscription réussie !");
     navigate("/")

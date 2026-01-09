@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import Frame from "../assets/icons/Frame.svg";
 import menuH from "../assets/icons/menuH.svg";
 import menuX from "../assets/icons/menuX.svg";
+import UserMenu from "./UserMenu";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
     <>
@@ -14,9 +17,9 @@ function Navbar() {
           <div className="flex items-center justify-between">
             
             <div className="flex items-center">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center">
+              <Link to="/" className="w-10 h-10 rounded-full flex items-center justify-center">
                 <img src={Frame} alt="Logo" />
-              </div>
+              </Link>
             </div>
 
             <div className="hidden lg:flex items-center space-x-8">
@@ -28,12 +31,19 @@ function Navbar() {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Link
-                to="/signup"
-                className="hidden lg:block text-sm font-medium text-black hover:text-gray-600"
-              >
-                Sign up
-              </Link>
+              {!isLoggedIn ? (
+                <Link
+                  to="/signup"
+                  className="hidden lg:block text-sm font-medium text-black hover:text-gray-600"
+                >
+                  Sign up
+                </Link>
+              ) : (
+                <div className="hidden lg:block">
+                  <UserMenu />
+                </div>
+              )}
+
               <span className="hidden lg:inline-block w-1 h-10 bg-black"></span>
               <button className="hidden lg:block bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gray-800 transition">
                 Connect Wallet
@@ -49,7 +59,6 @@ function Navbar() {
           </div>
         </div>
       </nav>
-
 
       {isOpen && (
         <div 
@@ -78,14 +87,23 @@ function Navbar() {
           </div>
 
           <div className="absolute left-6 right-6 flex items-center justify-center gap-4">
-            <Link
-                to="/signup"
-                className="text-base font-medium text-black"
-                onClick={() => setIsOpen(false)}
-              >
-                Sign up
-              </Link>
-            <span className="inline-block w-px h-10 bg-black"></span>
+            {!isLoggedIn ? (
+              <>
+                <Link
+                  to="/signup"
+                  className="text-base font-medium text-black"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Sign up
+                </Link>
+                <span className="inline-block w-px h-10 bg-black"></span>
+              </>
+            ) : (
+              <>
+                <UserMenu />
+                <span className="inline-block w-px h-10 bg-black"></span>
+              </>
+            )}
             <button className="bg-black text-white px-6 py-2.5 rounded-full text-base font-medium hover:bg-gray-800 transition">
               Connect Wallet
             </button>

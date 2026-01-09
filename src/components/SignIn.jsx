@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import bcrypt from "bcryptjs";
 import Input from "../components/Input";
 import Frame from "../assets/icons/Frame.svg";
 import { signInSchema } from "../components/validations.js";
@@ -40,7 +41,7 @@ function SignIn() {
   //   return newErrors;
   // };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
@@ -58,10 +59,17 @@ function SignIn() {
       return;
     }
 
-    if (storedUser.password !== formData.password) {
-      setErrors({ password: "Mot de passe incorrect" });
-      return;
-    }
+    const PasswordValid = await bcrypt.compare(
+        formData.password,      
+        storedUser.password  
+      );
+
+      if (!PasswordValid) {
+        setErrors({ password: "Mot de passe incorrect" });
+        return;
+      }
+
+      localStorage.setItem("isLoggedIn", "true");
 
     alert("Connexion réussie !");
     console.log("Utilisateur connecté :", storedUser);
