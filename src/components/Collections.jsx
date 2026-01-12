@@ -53,7 +53,7 @@ function Collections() {
     <section className="py-16 px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-4xl font-bold">Our Collections</h2>
+          <h2 className="text-3xl font-bold">Our Collections</h2>
           <a href="#" className="text-sm font-medium hover:border-b-2">
             View more
           </a>

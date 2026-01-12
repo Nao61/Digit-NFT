@@ -11,7 +11,7 @@ function Hero() {
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col lg:flex-row items-start justify-between">
           <div>
-            <h1 className="whitespace-nowrap text-5xl md:text-8xl lg:text-9xl mb-10">See the NFT <br /> new world</h1>
+            <h1 className="whitespace-nowrap text-5xl md:text-8xl lg:text-9xl mb-10 notranslate">See the NFT <br /> new world</h1>
             <p className="text-secondary text-lg mb-8 max-w-md">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam
               urna, nibh vitae bibendum. Et volutpat egestas sit pellentesque
