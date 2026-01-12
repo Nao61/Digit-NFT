@@ -88,8 +88,8 @@ function AboutUs() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <p className="text-5xl font-bold text-white mb-2 notranslate">{stat.value}</p>
-                <p className="text-xl text-purple-100 notranslate">{stat.label}</p>
+                <p translate="no" className="text-5xl font-bold text-white mb-2 notranslate">{stat.value}</p>
+                <p translate="no" className="text-xl text-purple-100 notranslate">{stat.label}</p>
               </div>
             ))}
           </div>
