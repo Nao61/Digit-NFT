@@ -23,11 +23,11 @@ function Navbar() {
             </div>
 
             <div className="hidden lg:flex items-center space-x-8">
-              <a href="#home" className="text-sm font-medium text-black hover:text-gray-600">Home</a>
-              <a href="#sales" className="text-sm font-medium text-secondary hover:text-black">Top sales</a>
-              <a href="#collections" className="text-sm font-medium text-secondary hover:text-black">Collections</a>
-              <a href="#blog" className="text-sm font-medium text-secondary hover:text-black">Our blog</a>
-              <a href="#about" className="text-sm font-medium text-secondary hover:text-black">About us</a>
+              <Link to="/" className="text-sm font-medium text-black hover:text-gray-600">Home</Link>
+              <Link to="/top-sales" className="text-sm font-medium text-secondary hover:text-black">Top sales</Link>
+              <Link to="/collections" className="text-sm font-medium text-secondary hover:text-black">Collections</Link>
+              <Link to="/blog" className="text-sm font-medium text-secondary hover:text-black">Our blog</Link>
+              <Link to="/about" className="text-sm font-medium text-secondary hover:text-black">About us</Link>
             </div>
 
             <div className="flex items-center space-x-4">
@@ -79,11 +79,11 @@ function Navbar() {
           </div>
 
           <div className="flex flex-col space-y-6 mb-8">
-            <a href="#home" className="text-lg font-semibold text-black hover:text-gray-600">Home</a>
-            <a href="#sales" className="text-lg font-normal text-secondary hover:text-black">Top sales</a>
-            <a href="#collections" className="text-lg font-normal text-secondary hover:text-black">Collections</a>
-            <a href="#blog" className="text-lg font-normal text-secondary hover:text-black">Our blog</a>
-            <a href="#about" className="text-lg font-normal text-secondary hover:text-black">About us</a>
+            <Link to="/" onClick={() => setIsOpen(false)} className="text-sm font-medium text-black hover:text-gray-600">Home</Link>
+            <Link to="/top-sales" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">Top sales</Link>
+            <Link to="/collections" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">Collections</Link>
+            <Link to="/blog" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">Our blog</Link>
+            <Link to="/about" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">About us</Link>
           </div>
 
           <div className="absolute left-6 right-6 flex items-center justify-center gap-4">
