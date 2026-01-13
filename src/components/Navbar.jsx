@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Frame from "../assets/icons/Frame.svg";
 import menuH from "../assets/icons/menuH.svg";
 import menuX from "../assets/icons/menuX.svg";
@@ -23,11 +23,11 @@ function Navbar() {
             </div>
 
             <div className="hidden lg:flex items-center space-x-8">
-              <Link to="/" className="text-sm font-medium text-black hover:text-gray-600">Home</Link>
-              <Link to="/top-sales" className="text-sm font-medium text-secondary hover:text-black">Top sales</Link>
-              <Link to="/collections" className="text-sm font-medium text-secondary hover:text-black">Collections</Link>
-              <Link to="/blog" className="text-sm font-medium text-secondary hover:text-black">Our blog</Link>
-              <Link to="/about" className="text-sm font-medium text-secondary hover:text-black">About us</Link>
+              <NavLink to="/" className={({ isActive }) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Home</NavLink>
+              <NavLink to="/top-sales" className={({ isActive }) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Top sales</NavLink>
+              <NavLink to="/collections" className={({ isActive }) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Collections</NavLink>
+              <NavLink to="/blog" className={({ isActive }) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Our blog</NavLink>
+              <NavLink to="/about" className={({ isActive }) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>About us</NavLink>
             </div>
 
             <div className="flex items-center space-x-4">
@@ -79,11 +79,11 @@ function Navbar() {
           </div>
 
           <div className="flex flex-col space-y-6 mb-8">
-            <Link to="/" onClick={() => setIsOpen(false)} className="text-sm font-medium text-black hover:text-gray-600">Home</Link>
-            <Link to="/top-sales" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">Top sales</Link>
-            <Link to="/collections" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">Collections</Link>
-            <Link to="/blog" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">Our blog</Link>
-            <Link to="/about" onClick={() => setIsOpen(false)} className="text-sm font-medium text-secondary hover:text-black">About us</Link>
+            <NavLink to="/" onClick={() => setIsOpen(false)} className={({isActive}) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Home</NavLink>
+            <NavLink to="/top-sales" onClick={() => setIsOpen(false)} className={({isActive}) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Top sales</NavLink>
+            <NavLink to="/collections" onClick={() => setIsOpen(false)} className={({isActive}) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Collections</NavLink>
+            <NavLink to="/blog" onClick={() => setIsOpen(false)} className={({isActive}) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>Our blog</NavLink>
+            <NavLink to="/about" onClick={() => setIsOpen(false)} className={({isActive}) => isActive ? "text-sm font-semibold text-black" : "text-sm font-medium text-secondary hover:text-black"}>About us</NavLink>
           </div>
 
           <div className="absolute left-6 right-6 flex items-center justify-center gap-4">
